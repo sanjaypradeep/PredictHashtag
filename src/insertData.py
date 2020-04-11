@@ -27,7 +27,7 @@ def connectToDB():
 
 def readFile(con):
     
-    with open("C:\\Users\\sanja\\Desktop\\FL\\March, 2020\\PopularTweet\\datasets\\test5060K-7500k_1.txt", "r", encoding='utf-8') as dataContent:        
+    with open("("<YourLocalDirectory>\\PopularTweet\\datasets\\\\<CHOSE_A_FILE_NAME_FROM_DATASETS_FOLDER.txt>", "r", encoding='utf-8') as dataContent:        
 
         t = ""
         u = ""
