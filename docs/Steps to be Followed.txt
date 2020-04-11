@@ -1,0 +1,23 @@
+Assuming, already those python libraies are installed.
+
+
+0. Before running below python file in local, please create a table in your MySQL DB.
+
+	a. TableName - tweet_dataset
+	b. columns are - [t,u,w,hashtag,mention,id(pk)]
+	c. Table details area available in the screenshot which is at PredictHashtag/doc/screenshots/tableDetails.png
+
+1. execute "inserData" python file
+
+	i. create a new directory as datasets at PredictHashtag/
+	ii. 
+	iii.
+	iv.
+
+	a. Open Terminal/Cmd prompt
+	b. go to PopularHashtag/src
+	c. python insertData.py
+	d. the above command will start executing/inserting your data sets in your DB.
+
+
+2. 
