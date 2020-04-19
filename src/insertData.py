@@ -27,7 +27,7 @@ def connectToDB():
 
 def readFile(con):
     
-    with open("("<YourLocalDirectory>\\PopularTweet\\datasets\\\\<CHOSE_A_FILE_NAME_FROM_DATASETS_FOLDER.txt>", "r", encoding='utf-8') as dataContent:        
+    with open('C:\\Users\\sanja\\Documents\\GitHub\\PredictHashtag\\datasets\\test1-1000.txt', 'r', encoding='utf-8') as dataContent:        
 
         t = ""
         u = ""
@@ -46,12 +46,10 @@ def readFile(con):
             if(i[0] == "W"):
                 byTab = i.split("\t")
                 w += json.dumps(byTab[1])
-                # print("Befor stripping - W ...", w)
                 w = w.strip('\"')
                 w = w.replace("'", "")
                 w = w.replace("\\n", "")
-                w = w.replace("\\n\\", "")
-                # print("After stripping - W ...", w)
+                w = w.replace("\\n\\", "")                
 
                 splittedTweet = w.split()
                 hashTagList = []
