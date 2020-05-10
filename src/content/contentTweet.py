@@ -46,18 +46,8 @@ def checkStringHasURL(inputTweetsList):
 
 def fc3(masterObj, totalTweetsAvailableWithUrl):
     for key, value in totalTweetsAvailableWithUrl.items():
-        masterObj[key][constant.CONSTANT_FC3_URL_FRACTION] = masterObj[key][constant.CONSTANT_FX2_TOTAL_TWEET_COUNT] / value
-    
-    print("Completing FC3..")
+        masterObj[key][constant.CONSTANT_FC3_URL_FRACTION] = masterObj[key][constant.CONSTANT_FX2_TOTAL_TWEET_COUNT] / value        
     return masterObj
-
-
-def KL(a, b):
-    a = np.asarray(a, dtype=np.float)
-    b = np.asarray(b, dtype=np.float)
-
-    return np.sum(np.where(a != 0, a * np.log(a / b), 0))
-
 
 def fc4():
     pass
@@ -84,7 +74,15 @@ def counterMappedHashTags(listOfHashTags):
     if(len(listOfHashTags) == 0):
         return
     return {x:listOfHashTags.count(x) for x in listOfHashTags}
+    
 
+def KL(a, b):
+    a = np.asarray(a, dtype=np.float)
+    b = np.asarray(b, dtype=np.float)
+
+    return np.sum(np.where(a != 0, a * np.log(a / b), 0))
+
+    
 def fc6(infoObj): #HashTagWordClarity
     if(len(infoObj)) == 0:
         return constant.CONSTANT_INPUT_VALIDATION_ERROR
@@ -113,10 +111,7 @@ def fc7(infoObj): #TweetClarity
 
         totalLenOfUniqueWords = len(set(allTweetString.split(" ")))
 
-        tweetClarityCalc =  (totalLenOfUniqueWords/totalLenOfAllTweetString) * 100
-
-        # print(key.replace("\n", ""), 100 - tweetClarityCalc)
-
+        tweetClarityCalc =  (totalLenOfUniqueWords/totalLenOfAllTweetString) * 100    
         totalUnquieWords = set(allTweetString.split(" "))
 
 
@@ -139,9 +134,6 @@ def fc7(infoObj): #TweetClarity
                             constant.CONSTANT_TOTAL_MENTIONED_USERS : len(menD), 
                             constant.CONSTANT_TOTAL_UNIQUE_URLS : len(urls)
                         }
-
-        # print(sampleOb)
-
     return sampleOb
     
 
@@ -222,6 +214,8 @@ if __name__ == constant.CONSTANT_MAIN_HOOK:
 
     topTrendingHash = getAllTopTrendingHashTagsFromDataset(connectionHook)
 
+    print("=========FC1 Completed ============")
+
     sampleHashTagObjj = {}
     for topHash in topTrendingHash:
         if fc1_alternate(topHash):
@@ -232,7 +226,7 @@ if __name__ == constant.CONSTANT_MAIN_HOOK:
         segNumbers = fc2(topHash)
         sampleHashTagObjj[topHash][constant.CONSTANT_FC2_WORD_SEGEMENTS] = segNumbers
 
-    # print(sampleHashTagObjj)
+    print("=========FC2 Completed ============")
 
     hashTagObj = fx2_getTotalTweets(connectionHook, sampleHashTagObjj)
 
@@ -251,7 +245,7 @@ if __name__ == constant.CONSTANT_MAIN_HOOK:
     fc3CompletedHashTagObj = fc3(hashTagObj, tempInfo)
     # print(fc3CompletedHashTagObj)
 
-    print("==================FC3 Completed =========================")
+    print("=========FC3 Completed ============")
 
     fc6CompletionObj = fc6(fc3CompletedHashTagObj)
 
@@ -265,9 +259,9 @@ if __name__ == constant.CONSTANT_MAIN_HOOK:
     test = fc7(allTweetsBasedOnHashTag)
 
     for key,value in globalInfoObj.items():
-        globalInfoObj[key][constant.CONSTANT_FC7_TWEET_CLARITY] = test[key]['FC7_TweetClarityPercentage']
-        globalInfoObj[key][constant.CONSTANT_TOTAL_MENTIONED_USERS] = test[key]['totalMentionedUsers']
-        globalInfoObj[key][constant.CONSTANT_TOTAL_UNIQUE_URLS] = test[key]['totalUniqueURLs']
+        globalInfoObj[key][constant.CONSTANT_FC7_TWEET_CLARITY] = test[key][constant.CONSTANT_FC7_TWEET_CLARITY]
+        globalInfoObj[key][constant.CONSTANT_TOTAL_MENTIONED_USERS] = test[key][constant.CONSTANT_TOTAL_MENTIONED_USERS]
+        globalInfoObj[key][constant.CONSTANT_TOTAL_UNIQUE_URLS] = test[key][constant.CONSTANT_TOTAL_UNIQUE_URLS]
     
     # print(globalInfoObj)
 
@@ -278,4 +272,4 @@ if __name__ == constant.CONSTANT_MAIN_HOOK:
     with open(constant.CONSTANT_FILE_NAME, constant.CONSTANT_FILE_WRITE_PERMISSION) as contextTweet:
         json.dump(globalInfoObj, contextTweet)
 
-    print("=============== Context Process Completed =============")
+    print("======= Content Process Completed ========")

@@ -46,5 +46,3 @@ CONSTANT_DEFAULT_VALUE = 0
 
 CONSTANT_RE_CHECK_STRING_HAS_URL = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\), ]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 CONSTANT_RE_0_9_VALIDATION = '^[0-9]*$'
-
-
