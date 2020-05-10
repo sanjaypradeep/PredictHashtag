@@ -21,7 +21,7 @@ CONSTANT_TOTAL_UNIQUE_URLS = "totalUniqueURLs"
 CONSTANT_TOTAL_TWEET_COUNTS = "FX2_TotalTweetCount"
 
 
-CONSTANT_FILE_NAME = "contextualTweet.json"
+CONSTANT_FILE_NAME = "contentTweetInfo.json"
 
 CONSTANT_FILE_WRITE_PERMISSION = "w"
 
