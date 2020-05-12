@@ -1,82 +1,13 @@
 import constant
+import json
 
-overAllData = {
-    "spymaster": {
-        "FC1_ContainDigits": "False",
-        "FC2_SegWordNum": 2,
-        "FX2_TotalTweetCount": 842,
-        "FC3_UrlFraction": 1.0023809523809524,
-        "FC6_HashTagClarity": 0.5,
-        "FC7_TweetClarityPercentage": 92.1289123024481,
-        "totalMentionedUsers": 266,
-        "totalUniqueURLs": 17,
-        "FX1_TotalUserCount": 286,
-        "FX3_ReplyFractionValue": 0.28,
-        "FX4_ReTweetFractionValue": 11,
-        "FX5_UserAuthority": 0.2915129151291513
-    },
-    "MP2": {
-        "FC1_ContainDigits": "True",
-        "FC2_SegWordNum": 1,
-        "FX2_TotalTweetCount": 490,
-        "FC3_UrlFraction": 13.243243243243244,
-        "FC6_HashTagClarity": 0.25,
-        "FC7_TweetClarityPercentage": 80.04455387501466,
-        "totalMentionedUsers": 88,
-        "totalUniqueURLs": 36,
-        "FX1_TotalUserCount": 347,
-        "FX3_ReplyFractionValue": 3.02,
-        "FX4_ReTweetFractionValue": 439,
-        "FX5_UserAuthority": 0.18840579710144928
-    },
-    "squarespace": {
-        "FC1_ContainDigits": "False",
-        "FC2_SegWordNum": 2,
-        "FX2_TotalTweetCount": 456,
-        "FC3_UrlFraction": 4.903225806451613,
-        "FC6_HashTagClarity": 0.5,
-        "FC7_TweetClarityPercentage": 51.67270402727466,
-        "totalMentionedUsers": 59,
-        "totalUniqueURLs": 71,
-        "FX1_TotalUserCount": 72,
-        "FX3_ReplyFractionValue": 0.23,
-        "FX4_ReTweetFractionValue": 64,
-        "FX5_UserAuthority": 0.42592592592592593
-    },
-    "fb": {
-        "FC1_ContainDigits": "False",
-        "FC2_SegWordNum": 1,
-        "FX2_TotalTweetCount": 398,
-        "FC3_UrlFraction": 1.5731225296442688,
-        "FC6_HashTagClarity": 0.25,
-        "FC7_TweetClarityPercentage": 44.187923797223114,
-        "totalMentionedUsers": 94,
-        "totalUniqueURLs": 210,
-        "FX1_TotalUserCount": 95,
-        "FX3_ReplyFractionValue": 0.25,
-        "FX4_ReTweetFractionValue": 95,
-        "FX5_UserAuthority": 0.5555555555555556
-    },
-    "VampireBite": {
-        "FC1_ContainDigits": "False",
-        "FC2_SegWordNum": 3,
-        "FX2_TotalTweetCount": 369,
-        "FC3_UrlFraction": 1.005449591280654,
-        "FC6_HashTagClarity": 0.75,
-        "FC7_TweetClarityPercentage": 79.9592252803262,
-        "totalMentionedUsers": 723,
-        "totalUniqueURLs": 227,
-        "FX1_TotalUserCount": 367,
-        "FX3_ReplyFractionValue": 0.5,
-        "FX4_ReTweetFractionValue": 19,
-        "FX5_UserAuthority": 0.2716417910447761
-    }
-}
-
+dat = open(constant.CONSTANT_FILE_NAME, constant.CONSTANT_FILE_WRITE_PERMISSION)
+overAllJSONResult = json.load(dat)
 
 scoreOutput = {}
 
-for hashTag, values in overAllData.items():
+# for hashTag, values in overAllData.items():
+for hashTag, values in overAllJSONResult.items():
     # print(hashTag)
     print(values[constant.CONSTANT_FC1_CONTAINING_DIGITS])
 
@@ -114,7 +45,7 @@ print(scoreOutput)
 overAllScore = {}
 
 for k,v in scoreOutput.items():    
-    print(k, sum(list(v.values())))
+    # print(k, sum(list(v.values())))
     overAllScore[k] = sum(list(v.values()))
 
 from matplotlib import pyplot as plt 

@@ -278,15 +278,20 @@ if __name__ == constant.CONSTANT_MAIN_HOOK:
 
 
     # *****Below code can be commented after executing for the first time ****
-    # getAllMentionedUsersFromHashTag(connectionHook, topTrendingHash)
+    getAllMentionedUsersFromHashTag(connectionHook, topTrendingHash)
     # *************************************************************************
 
     thisLevelGlobalObject = fx5(topTrendingHash, thisLevelGlobalObject)
-    # print(thisLevelGlobalObject)
+    print(thisLevelGlobalObject)
 
     print("================ FX5 Completed =============")
+    import json
 
-    print(" Please Execute clGraphy.py as a next process .. ")
-    print(" Please Execute predictTomoHashTag.py as final process .. ")
+    with open('contentTweetInfo.json','w') as dumpedInfo:
+        json.dump(thisLevelGlobalObject,dumpedInfo)
+
+    print("=============== Calcluated Values are written ContentTweetInfo.json ================")
 
 
+    print(" Please Execute clGraphy.py as a next process .. \n")
+    print(" Please Execute predictTomoHashTag.py as final process .. \n")
